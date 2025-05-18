@@ -30,7 +30,7 @@ export default async function Video({
         poster={`/thumbnails/${id}.jpg`}
         className="w-full rounded-sm mb-3 border border-gray-700 bg-black"
       >
-        Sorry, your browser doesn't support embedded videos.
+        Sorry, your browser do not support embedded videos.
       </video>
 
       <h2 itemProp="name" className="text-lg font-semibold text-gray-100 mb-1">

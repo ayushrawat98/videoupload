@@ -1,4 +1,4 @@
-import { eq, asc, desc } from "drizzle-orm";
+import { eq, asc } from "drizzle-orm";
 import { db } from "./database";
 import { videos } from './schema'; // your schema file
 

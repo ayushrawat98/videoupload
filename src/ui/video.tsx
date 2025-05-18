@@ -11,6 +11,9 @@ export default async function Video({
   id: number;
   date : string
 }) {
+
+    const path = "https://bharattube.xyz"
+
   return (
     <article
       itemScope
@@ -20,14 +23,14 @@ export default async function Video({
       <meta itemProp="uploadDate" content={date} />
       <meta itemProp="name" content={title} />
       <meta itemProp="description" content={description} />
-      <meta itemProp="thumbnailUrl" content={`/thumbnails/${id}.jpg`} />
+      <meta itemProp="thumbnailUrl" content={`${path}/thumbnails/${id}.jpg`} />
 
       <video
         itemProp="contentUrl"
-        src={`/videos/${id}`}
+        src={`${path}/videos/${id}`}
         controls
         preload="none"
-        poster={`/thumbnails/${id}.jpg`}
+        poster={`${path}/thumbnails/${id}.jpg`}
         className="w-full rounded-sm mb-3 border border-gray-700 bg-black"
       >
         Sorry, your browser do not support embedded videos.

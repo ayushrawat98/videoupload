@@ -3,7 +3,7 @@ import { videos } from "@/lib/schema";
 import Video from "@/ui/video";
 import { desc } from 'drizzle-orm';
 
-
+export const dynamic = 'force-dynamic';
 export default async function Home() {
   const videolist = await db.select().from(videos).orderBy(desc(videos.createdAt));
   return (

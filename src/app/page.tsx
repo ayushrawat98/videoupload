@@ -1,17 +1,19 @@
 import { db } from "@/lib/database";
 import { videos } from "@/lib/schema";
+import { getVideosWithComments } from "@/lib/upload";
 import Video from "@/ui/video";
 import { desc } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
 export default async function Home() {
-  const videolist = await db.select().from(videos).orderBy(desc(videos.createdAt));
+  // const videolist = await db.select().from(videos).orderBy(desc(videos.createdAt));
+  const videolist = await getVideosWithComments()
   return (
     <>
       <div className="grid grid-cols-1 gap-6 px-4 py-6 max-w-[600px] mx-auto">
       {
         videolist.map(video => {
-          return <Video key={video.id} title={video.title} description={video.description} id={video.id} date={video.createdAt}/>
+          return <Video key={video.id} {...video}/>
         })
       }
       </div>

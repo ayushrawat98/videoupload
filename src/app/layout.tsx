@@ -26,9 +26,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-gray-950 to-gray-900`}>
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-100 max-w-[600px] mx-auto text-center mb-1 mt-3">
-          <Link href="/upload">BharatTube</Link>
-        </h1>
+        <div className="grid grid-cols-2 gap-6 px-4 py-6 max-w-[600px] mx-auto items-center">
+          <h1 className="text-3xl font-bold text-gray-100">
+            <Link href="/">BharatTube</Link>
+          </h1>
+          <div className="text-right">
+            <Link href="/upload" className="inline-block bg-blue-600 text-white font-medium px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+              Upload
+            </Link>
+          </div>
+        </div>
         {children}
       </body>
     </html>

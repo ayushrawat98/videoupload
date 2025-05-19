@@ -1,18 +1,23 @@
 'use server';
 
+import CommentButton from "./commentbutton";
+
 export default async function Video({
   title,
   description,
   id,
-  date
+  createdAt,
+  commentCount
 }: {
   title: string;
   description: string;
   id: number;
-  date : string
+  createdAt : string;
+  commentCount : number
 }) {
 
     const path = "https://bharattube.xyz"
+    // const path = ""
 
   return (
     <article
@@ -20,7 +25,7 @@ export default async function Video({
       itemType="https://schema.org/VideoObject"
       className="p-4 bg-gray-800 border border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-md"
     >
-      <meta itemProp="uploadDate" content={date} />
+      <meta itemProp="uploadDate" content={createdAt} />
       <meta itemProp="name" content={title} />
       <meta itemProp="description" content={description} />
       <meta itemProp="thumbnailUrl" content={`${path}/thumbnails/${id}.jpg`} />
@@ -42,6 +47,7 @@ export default async function Video({
       <p itemProp="description" className="text-gray-300 text-sm">
         {description}
       </p>
+      <CommentButton count={commentCount}/>
     </article>
   );
 }

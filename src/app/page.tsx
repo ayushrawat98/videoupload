@@ -1,8 +1,8 @@
-import { db } from "@/lib/database";
-import { videos } from "@/lib/schema";
+// import { db } from "@/lib/database";
+// import { videos } from "@/lib/schema";
 import { getVideosWithComments } from "@/lib/upload";
 import Video from "@/ui/video";
-import { desc } from 'drizzle-orm';
+// import { desc } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
 export default async function Home() {

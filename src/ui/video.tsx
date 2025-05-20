@@ -20,10 +20,11 @@ export default async function Video({
     // const path = ""
 
   return (
+    // bg-gray-800 border border-gray-700
     <article
       itemScope
       itemType="https://schema.org/VideoObject"
-      className="p-4 bg-gray-800 border border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-md"
+      className="p-4 shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-md"
     >
       <meta itemProp="uploadDate" content={createdAt} />
       <meta itemProp="name" content={title} />
@@ -47,7 +48,7 @@ export default async function Video({
       <p itemProp="description" className="text-gray-300 text-sm">
         {description}
       </p>
-      <CommentButton count={commentCount}/>
+      <CommentButton count={commentCount} id={id}/>
     </article>
   );
 }

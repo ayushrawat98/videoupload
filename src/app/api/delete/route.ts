@@ -22,7 +22,7 @@ export async function GET(request: Request) {
     //delete thumbnail
     await fs.unlink(path.join(process.cwd(), 'public', 'thumbnails', videoId))
     }catch(err){
-        
+        console.log(err)
     }
 
     return NextResponse.json({ error: 'sucess'}, { status: 200 });

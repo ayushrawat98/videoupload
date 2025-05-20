@@ -7,9 +7,6 @@ export default function CommentButton({count, id} : {count : number, id : number
 
     const [open, setOpen] = useState(false);
 
-    function showComments(){
-        alert("Show comments / Add comments")
-    }
     return (
         <>
             <button className="bg-blue-600/10 backdrop-blur-md shadow-md border border-white/20 text-white p-2 my-2 w-full" onClick={() => setOpen(true)}>{count} Comments</button>

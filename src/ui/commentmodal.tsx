@@ -13,7 +13,7 @@ export default function CommentModal({ videoId, onClose }: { videoId: number; on
       if (res.ok) setComments(await res.json());
     }
     fetchComments();
-  }, []);
+  }, [videoId]);
 
   async function handleAdd() {
     if (!newText.trim()) return;

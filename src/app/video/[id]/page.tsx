@@ -3,6 +3,8 @@
 import Video from "@/ui/video"
 import { getVideoWithComments } from "@/lib/upload"
 
+// export const revalidate = 600;
+
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
     const reqData = await getVideoWithComments(Number(id))

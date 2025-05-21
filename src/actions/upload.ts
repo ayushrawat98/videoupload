@@ -15,8 +15,8 @@ export async function uploadAction(prevState: { error?: string, success?: boolea
         return { error: 'Title length should be between 0-200' }
     } else if (typeof description !== 'string' || description.trim() === '' || description.trim().length > 200) {
         return { error: 'Description length should be between 0-2000' }
-    } else if (video.size > 20971520) {
-        return { error: 'Vidoe size should be less than 20 MB' }
+    } else if (video.size > 52428800) {
+        return { error: 'Vidoe size should be less than 50 MB' }
     }
 
     //DB
@@ -40,7 +40,7 @@ export async function uploadAction(prevState: { error?: string, success?: boolea
 
 async function deleteVideo() {
     const allVideos = await getLastVideo()
-    if (allVideos.length > 50) {
+    if (allVideos.length > 600) {
         const oldest = allVideos[0];
 
         // Delete video file and thumbnail

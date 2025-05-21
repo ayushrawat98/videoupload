@@ -40,7 +40,7 @@ export default function CommentModal({ videoId, onClose }: { videoId: number; on
           { loadingComments && <div className="h-5 bg-gray-700 rounded w-3/4 mb-2 animate-pulse" />}
           {comments.map(c => (
             <div key={c.id} className="p-2 text-white rounded">
-              Anon : {c.content}
+              Anon {c.id} : {c.content}
             </div>
           ))}
         </div>

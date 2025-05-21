@@ -39,6 +39,7 @@ export default function Upload() {
                     required
                     className="border p-2 rounded"
                 />
+                <span>Max size 50 MB</span>
                 <button type="submit" className="bg-blue-600 text-white p-2 rounded disabled:opacity-50" disabled={pending}>
                     {pending ? 'Uploading...' : 'Upload'}
                 </button>

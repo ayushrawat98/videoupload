@@ -23,7 +23,6 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const { videoId, text } = await request.json();
-  console.log(text.trim().length == 0, !videoId)
   if (!videoId || text.trim().length == 0) {
     return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
   }

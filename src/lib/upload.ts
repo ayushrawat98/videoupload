@@ -11,7 +11,7 @@ export async function addNewVideo(detail : {title : string, description : string
   }).returning();
 }
 
-export async function getVideosWithComments(){
+export async function getAllVideosWithComments(){
   return db
   .select({
     id: videos.id,
@@ -24,6 +24,23 @@ export async function getVideosWithComments(){
   .leftJoin(comments, eq(comments.videoId,videos.id))
   .groupBy(videos.id)
   .orderBy(desc(videos.createdAt));
+}
+
+export async function getVideoWithComments(videoId : number){
+  return db
+  .select({
+    id: videos.id,
+    title: videos.title,
+    description : videos.description,
+    createdAt: videos.createdAt,
+    commentCount: sql<number>`COUNT(${comments.id})`.as('commentCount'),
+  })
+  .from(videos)
+  .leftJoin(comments, eq(comments.videoId,videos.id))
+  .where(eq(videos.id, videoId))
+  .groupBy(videos.id)
+  .limit(1)
+  .then(rows => rows[0]);
 }
 
 export async function deleteLastVideo(id : number){

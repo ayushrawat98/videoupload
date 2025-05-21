@@ -5,12 +5,15 @@ type Comment = { id: number; videoId: number; content: string };
 
 export default function CommentModal({ videoId, onClose }: { videoId: number; onClose: () => void }) {
   const [comments, setComments] = useState<Comment[]>([]);
+  const [loadingComments, setLoadingComments] = useState(false);
   const [newText, setNewText] = useState('');
 
   useEffect(() => {
+    setLoadingComments(true)
     async function fetchComments() {
       const res = await fetch(`/api/comments?videoId=${videoId}`);
       if (res.ok) setComments(await res.json());
+      setLoadingComments(false)
     }
     fetchComments();
   }, [videoId]);
@@ -34,7 +37,7 @@ export default function CommentModal({ videoId, onClose }: { videoId: number; on
       <div className=" w-full bg-black max-h-3/4 rounded-t-2xl p-4 overflow-y-auto animate-slide-up">
         <button onClick={onClose} className="text-right w-full mb-2">✕</button>
         <div className="space-y-2">
-          { comments.length == 0 && <div className="h-5 bg-gray-700 rounded w-3/4 mb-2 animate-pulse" />}
+          { loadingComments && <div className="h-5 bg-gray-700 rounded w-3/4 mb-2 animate-pulse" />}
           {comments.map(c => (
             <div key={c.id} className="p-2 text-white rounded">
               Anon : {c.content}

@@ -1,6 +1,7 @@
 'use server';
 
 import CommentButton from "./commentbutton";
+import CopyLink from "./copylink";
 
 export default async function Video({
   title,
@@ -21,6 +22,7 @@ export default async function Video({
 
   return (
     // bg-gray-800 border border-gray-700
+    
     <article
       itemScope
       itemType="https://schema.org/VideoObject"
@@ -31,6 +33,8 @@ export default async function Video({
       <meta itemProp="description" content={description} />
       <meta itemProp="thumbnailUrl" content={`${path}/thumbnails/${id}.jpg`} />
 
+      <CopyLink id={id}/>
+      
       <video
         itemProp="contentUrl"
         src={`${path}/videos/${id}`}

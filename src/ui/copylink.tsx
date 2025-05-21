@@ -25,7 +25,7 @@ export default function CopyLink({ id }: { id: number }) {
             <button className="bg-blue-600/10 backdrop-blur-md shadow-md border border-white/20 text-white p-2 my-2 w-[20%]" onClick={(event) => copyLink(event)}>Share</button>
             {text && (
                 <div
-                    className="absolute top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm rounded px-2 py-1"
+                    className="fixed top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm rounded px-2 py-1"
                     role="tooltip"
                 >
                     Link copied!

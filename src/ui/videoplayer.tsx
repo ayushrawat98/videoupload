@@ -25,7 +25,7 @@ export default function VideoPlayer({ path, id }: { path: string, id: number }) 
                 controls
                 preload="none"
                 poster={`${path}/thumbnails/${id}.jpg`}
-                className={"w-full rounded-sm mb-3 border border-gray-700 bg-black " + (isVertical ? "max-h-[50vh]" : "")}
+                className={"w-full rounded-sm mb-3 outline outline-gray-700 bg-black " + (isVertical ? "max-h-[50vh]" : "")}
             >
                 Sorry, your browser do not support embedded videos.
             </video>

@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-gray-950 to-gray-900`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900`}>
         <div className="grid grid-cols-2 gap-6 px-4 py-6 max-w-[600px] mx-auto items-center">
           <h1 className="text-3xl font-bold text-gray-100">
             <Link href="/">BharatTube</Link>

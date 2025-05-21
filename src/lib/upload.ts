@@ -12,7 +12,7 @@ export async function addNewVideo(detail : {title : string, description : string
   }).returning();
 }
 
-export async function getAllVideosWithComments(){
+export async function getAllVideosWithComments(limit : number, offset : number){
   return db
   .select({
     id: videos.id,
@@ -24,7 +24,9 @@ export async function getAllVideosWithComments(){
   .from(videos)
   .leftJoin(comments, eq(comments.videoId,videos.id))
   .groupBy(videos.id)
-  .orderBy(desc(videos.createdAt));
+  .orderBy(desc(videos.createdAt))
+  .limit(limit)
+  .offset(offset);
 }
 
 export const getVideoWithComments = cache(async (videoId: number) => {

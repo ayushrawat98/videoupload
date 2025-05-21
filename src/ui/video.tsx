@@ -2,6 +2,7 @@
 
 import CommentButton from "./commentbutton";
 import CopyLink from "./copylink";
+import VideoPlayer from "./videoplayer";
 
 export default async function Video({
   title,
@@ -34,8 +35,10 @@ export default async function Video({
       <meta itemProp="thumbnailUrl" content={`${path}/thumbnails/${id}.jpg`} />
 
       {/* <CopyLink id={id}/> */}
+
+      <VideoPlayer path={path} id={id}/>
       
-      <video
+      {/* <video
         itemProp="contentUrl"
         src={`${path}/videos/${id}`}
         controls
@@ -44,7 +47,7 @@ export default async function Video({
         className="w-full rounded-sm mb-3 border border-gray-700 bg-black"
       >
         Sorry, your browser do not support embedded videos.
-      </video>
+      </video> */}
 
       <h2 itemProp="name" className="text-lg font-semibold text-gray-100 mb-1">
         {title}

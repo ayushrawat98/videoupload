@@ -33,7 +33,7 @@ export default async function Video({
       <meta itemProp="description" content={description} />
       <meta itemProp="thumbnailUrl" content={`${path}/thumbnails/${id}.jpg`} />
 
-      <CopyLink id={id}/>
+      {/* <CopyLink id={id}/> */}
       
       <video
         itemProp="contentUrl"
@@ -52,7 +52,8 @@ export default async function Video({
       <p itemProp="description" className="text-gray-300 text-sm">
         {description}
       </p>
-      <CommentButton count={commentCount} id={id}/>
+      <CommentButton count={commentCount} id={id} extra="w-[80%]"/>
+      <CopyLink id={id}/>
     </article>
   );
 }

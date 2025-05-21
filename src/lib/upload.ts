@@ -1,6 +1,7 @@
 import { eq, asc, sql, desc } from "drizzle-orm";
 import { db } from "./database";
 import { comments, videos } from './schema'; // your schema file
+import { cache } from "react";
 
 export async function addNewVideo(detail : {title : string, description : string}) {
   return await db.insert(videos).values({
@@ -26,22 +27,28 @@ export async function getAllVideosWithComments(){
   .orderBy(desc(videos.createdAt));
 }
 
-export async function getVideoWithComments(videoId : number){
-  return db
-  .select({
-    id: videos.id,
-    title: videos.title,
-    description : videos.description,
-    createdAt: videos.createdAt,
-    commentCount: sql<number>`COUNT(${comments.id})`.as('commentCount'),
-  })
-  .from(videos)
-  .leftJoin(comments, eq(comments.videoId,videos.id))
-  .where(eq(videos.id, videoId))
-  .groupBy(videos.id)
-  .limit(1)
-  .then(rows => rows[0]);
-}
+export const getVideoWithComments = cache(async (videoId: number) => {
+  const result = await db
+    .select({
+      id: videos.id,
+      title: videos.title,
+      description: videos.description,
+      createdAt: videos.createdAt,
+      commentCount: sql<number>`COUNT(${comments.id})`.as('commentCount'),
+    })
+    .from(videos)
+    .leftJoin(comments, eq(comments.videoId, videos.id))
+    .where(eq(videos.id, videoId))
+    .groupBy(videos.id)
+    .limit(1);
+
+    if(result.length == 0){
+      return null
+    }else{
+      return result[0]
+    }
+  // return result[0] ?? null;
+});
 
 export async function deleteLastVideo(id : number){
     return await db.delete(videos).where(eq(videos.id, id));

@@ -22,11 +22,13 @@ export default function InfiniteLoader() {
     useEffect(() => {
 
         if (isFirstRun.current) {
-            console.log('first run')
             isFirstRun.current = false
             return;
         }
+        setLoading(true)
         const fetchItems = async () => {
+            // await new Promise(res => setTimeout(res, 3000))
+
             const res = await fetch(`/api/videos?page=${page}`)
             const data = await res.json()
             if (data.length == 0) {
@@ -44,7 +46,6 @@ export default function InfiniteLoader() {
     useEffect(() => {
         const observer = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && !loading && !noData) {
-                setLoading(true)
                 setPage(prev => prev + 1)
             }
         }, { threshold: 1.0 })
@@ -58,30 +59,23 @@ export default function InfiniteLoader() {
 
     return (
         <>
+            
+
             {
                 items.map(video => {
                     return <VideoClient key={video.id} {...video} />
                 })
             }
-            {loading && <><article className="p-4  shadow-lg rounded-md animate-pulse">
+
+            {loading && <article className="p-4  shadow-lg rounded-md animate-pulse">
                 <div className="w-full h-48 bg-gray-700 rounded-sm mb-3" />
 
                 <div className="h-5 bg-gray-700 rounded w-3/4 mb-2" />
                 <div className="h-4 bg-gray-700 rounded w-full" />
             </article>
-                <article className="p-4  shadow-lg rounded-md animate-pulse">
-                    <div className="w-full h-48 bg-gray-700 rounded-sm mb-3" />
+            }
 
-                    <div className="h-5 bg-gray-700 rounded w-3/4 mb-2" />
-                    <div className="h-4 bg-gray-700 rounded w-full" />
-                </article>
-                <article className="p-4  shadow-lg rounded-md animate-pulse">
-                    <div className="w-full h-48 bg-gray-700 rounded-sm mb-3" />
-
-                    <div className="h-5 bg-gray-700 rounded w-3/4 mb-2" />
-                    <div className="h-4 bg-gray-700 rounded w-full" />
-                </article></>}
-            {noData && <span>No more videos (┬┬﹏┬┬)</span>}
+            {noData && <span className='text-center'>No more videos (┬┬﹏┬┬)</span>}
             <div ref={loaderRef} className="h-10" />
         </>
     )

@@ -19,14 +19,17 @@ export default async function Home({
   const hasMore = videolist[videolist.length-1].id != 1
   return (
     <>
-      <div className="grid grid-cols-1 gap-6 px-4 py-6 max-w-[600px] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 px-4 py-6 max-w-[600px] lg:max-w-[1200px] mx-auto">
         {
           videolist.map(video => {
             return <Video key={video.id} {...video} />
           })
         }
 
-        <div className="mt-6 flex justify-between">
+        {/* <InfiniteLoader /> */}
+      </div>
+
+      <div className="mt-1 mb-3 px-4 flex justify-between max-w-[600px] lg:max-w-[1200px] mx-auto">
           {/* Prev button */}
           {page > 1 ? (
             <Link
@@ -51,10 +54,7 @@ export default async function Home({
             <span />
           )}
         </div>
-
-          <ScrollToTopOnNavigation/>
-        {/* <InfiniteLoader /> */}
-      </div>
+        <ScrollToTopOnNavigation/>
     </>
   );
 }

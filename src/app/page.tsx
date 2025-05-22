@@ -1,6 +1,7 @@
 // import { db } from "@/lib/database";
 // import { videos } from "@/lib/schema";
 import { getAllVideosWithComments } from "@/lib/upload";
+import ScrollToTopOnNavigation from "@/ui/scrolltotop";
 // import InfiniteLoader from "@/ui/infiniteloader";
 import Video from "@/ui/video";
 import Link from "next/link";
@@ -51,6 +52,7 @@ export default async function Home({
           )}
         </div>
 
+          <ScrollToTopOnNavigation/>
         {/* <InfiniteLoader /> */}
       </div>
     </>

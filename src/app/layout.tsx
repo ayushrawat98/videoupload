@@ -31,8 +31,8 @@ export default function RootLayout({
           <h1 className="text-3xl font-bold text-gray-100">
             <Link href="/">BharatTube</Link>
           </h1>
-          <div className="text-right">
-            <Link href="/upload" className="inline-block bg-blue-600/30 text-white font-medium px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+          <div className="text-right ">
+            <Link href="/upload" className="inline-block bg-blue-600/30 text-white font-medium px-4 py-2 rounded-sm shadow hover:bg-blue-700 transition ">
               Upload
             </Link>
           </div>

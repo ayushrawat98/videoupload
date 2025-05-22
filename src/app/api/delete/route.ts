@@ -20,7 +20,7 @@ export async function GET(request: Request) {
     //delete video
     await fs.unlink(path.join(process.cwd(), 'public', 'videos', videoId))
     //delete thumbnail
-    await fs.unlink(path.join(process.cwd(), 'public', 'thumbnails', videoId))
+    await fs.unlink(path.join(process.cwd(), 'public', 'thumbnails', videoId+".jpg"))
     }catch(err){
         console.log(err)
     }

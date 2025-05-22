@@ -19,7 +19,6 @@ export default function VideoPlayer({ path, id }: { path: string, id: number }) 
                 onLoadedMetadata={(e) => metaDataLoaded(e)}
                 className={"w-full rounded-sm mb-3 outline outline-gray-700 bg-black " + (isVertical ? "max-h-[50vh]" : "")}
             >
-                Sorry, your browser do not support embedded videos.
             </video>
         </>
     );

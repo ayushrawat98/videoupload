@@ -30,9 +30,10 @@ export default async function Video({
       className="p-4 shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-md"
     >
       <meta itemProp="uploadDate" content={createdAt} />
-      <meta itemProp="name" content={title} />
-      <meta itemProp="description" content={description} />
+      {/* <meta itemProp="name" content={title} />
+      <meta itemProp="description" content={description} /> */}
       <meta itemProp="thumbnailUrl" content={`${path}/thumbnails/${id}.jpg`} />
+      {/* <meta itemProp="contentUrl" content={`${path}/videos/${id}`}></meta> */}
 
       {/* <CopyLink id={id}/> */}
 

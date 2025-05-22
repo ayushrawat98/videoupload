@@ -27,7 +27,7 @@ export default async function Video({
     <article
       itemScope
       itemType="https://schema.org/VideoObject"
-      className="p-4 shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-md"
+      className="p-4 hover:shadow-xl transition-shadow duration-200 rounded-md"
     >
       <meta itemProp="uploadDate" content={createdAt} />
       {/* <meta itemProp="name" content={title} />
@@ -56,7 +56,7 @@ export default async function Video({
         controls
         preload="none"
         poster={`${path}/thumbnails/${id}.jpg`}
-        className="w-full rounded-sm mb-3 outline outline-gray-700 bg-black aspect-video"
+        className="w-full rounded-sm mb-3 outline outline-gray-700 bg-black aspect-video shadow-lg"
       >
       </video>
 

@@ -1,7 +1,7 @@
 // import { db } from "@/lib/database";
 // import { videos } from "@/lib/schema";
 import { getAllVideosWithComments } from "@/lib/upload";
-import InfiniteLoader from "@/ui/infiniteloader";
+// import InfiniteLoader from "@/ui/infiniteloader";
 import Video from "@/ui/video";
 // import { desc } from 'drizzle-orm';
 

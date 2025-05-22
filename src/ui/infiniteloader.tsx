@@ -44,18 +44,19 @@ export default function InfiniteLoader() {
     }, [page])
 
     useEffect(() => {
+        const target = loaderRef.current
         const observer = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && !loading && !noData) {
                 setPage(prev => prev + 1)
             }
         }, { threshold: 1.0 })
 
-        if (loaderRef.current) observer.observe(loaderRef.current)
+        if (target) observer.observe(target)
 
         return () => {
-            if (loaderRef.current) observer.unobserve(loaderRef.current)
+            if (target) observer.unobserve(target)
         }
-    }, [loading])
+    }, [loading, noData])
 
     return (
         <>

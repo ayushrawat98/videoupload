@@ -25,6 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="google-site-verification" content="Fc18zIdo6Geo7m6nFSho38ZUL67NpIVrJrBzV57uxag" />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900`}>
         <div className="grid grid-cols-2 gap-6 px-4 py-6 max-w-[600px] mx-auto items-center">
           <h1 className="text-3xl font-bold text-gray-100">

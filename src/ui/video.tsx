@@ -2,7 +2,7 @@
 
 import CommentButton from "./commentbutton";
 import CopyLink from "./copylink";
-import VideoPlayer from "./videoplayer";
+// import VideoPlayer from "./videoplayer";
 
 export default async function Video({
   title,
@@ -14,16 +14,16 @@ export default async function Video({
   title: string;
   description: string;
   id: number;
-  createdAt : string;
-  commentCount : number
+  createdAt: string;
+  commentCount: number
 }) {
 
-    const path = "https://bharattube.xyz"
-    // const path = ""
+  const path = "https://bharattube.xyz"
+  // const path = ""
 
   return (
     // bg-gray-800 border border-gray-700
-    
+
     <article
       itemScope
       itemType="https://schema.org/VideoObject"
@@ -37,8 +37,8 @@ export default async function Video({
 
       {/* <CopyLink id={id}/> */}
 
-      <VideoPlayer path={path} id={id}/>
-      
+      {/* <VideoPlayer path={path} id={id} /> */}
+
       {/* <video
         itemProp="contentUrl"
         src={`${path}/videos/${id}`}
@@ -50,14 +50,24 @@ export default async function Video({
         Sorry, your browser do not support embedded videos.
       </video> */}
 
+      <video
+        itemProp="contentUrl"
+        src={`${path}/videos/${id}`}
+        controls
+        preload="none"
+        poster={`${path}/thumbnails/${id}.jpg`}
+        className="w-full rounded-sm mb-3 outline outline-gray-700 bg-black aspect-video"
+      >
+      </video>
+
       <h2 itemProp="name" className="text-lg font-semibold text-gray-100 mb-1">
         {title}
       </h2>
       <p itemProp="description" className="text-gray-300 text-sm">
         {description}
       </p>
-      <CommentButton count={commentCount} id={id} extra="w-[80%]"/>
-      <CopyLink id={id}/>
+      <CommentButton count={commentCount} id={id} extra="w-[80%]" />
+      <CopyLink id={id} />
     </article>
   );
 }

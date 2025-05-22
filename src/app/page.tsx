@@ -8,7 +8,7 @@ import Video from "@/ui/video";
 export const dynamic = 'force-dynamic';
 export default async function Home() {
   // const videolist = await db.select().from(videos).orderBy(desc(videos.createdAt));
-  const videolist = await getAllVideosWithComments(8,0)
+  const videolist = await getAllVideosWithComments(600,0)
   return (
     <>
       <div className="grid grid-cols-1 gap-6 px-4 py-6 max-w-[600px] mx-auto">
@@ -17,7 +17,7 @@ export default async function Home() {
           return <Video key={video.id} {...video}/>
         })
       }
-      <InfiniteLoader />
+      {/* <InfiniteLoader /> */}
       </div>
     </>
   );
